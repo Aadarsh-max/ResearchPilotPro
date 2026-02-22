@@ -22,7 +22,6 @@ const Navbar = () => {
     navigate("/");
   };
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -44,7 +43,6 @@ const Navbar = () => {
       shadow-[0_10px_40px_rgba(0,0,0,0.04)]
       sticky top-0 z-50"
     >
-      {/* Logo */}
       <Link to="/" className="cursor-pointer">
         <h1
           className="text-2xl font-bold tracking-tight text-[#5B2A86]

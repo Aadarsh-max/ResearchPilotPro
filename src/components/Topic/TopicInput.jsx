@@ -20,7 +20,6 @@ const TopicInput = ({ onSearch }) => {
   <div className="w-full max-w-4xl bg-white p-10 rounded-3xl border border-gray-100
   shadow-[0_20px_60px_rgba(0,0,0,0.06)]">
 
-    {/* Heading */}
     <h2 className="text-3xl font-bold text-[#5B2A86] mb-6 tracking-tight">
       Enter a Research Topic
     </h2>

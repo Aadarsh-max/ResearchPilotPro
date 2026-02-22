@@ -14,7 +14,7 @@ const IEEEPaperPanel = ({ researchData, setResearchData }) => {
       const token = localStorage.getItem("token");
 
       const response = await axios.post(
-        `http://localhost:8000/api/research/generate-ieee/${researchData.sessionId}`,
+        `https://research-back-psi.vercel.app/api/research/generate-ieee/${researchData.sessionId}`,
         {},
         {
           headers: token ? { Authorization: `Bearer ${token}` } : {},
@@ -34,7 +34,7 @@ const IEEEPaperPanel = ({ researchData, setResearchData }) => {
 
   const handleExport = () => {
     window.open(
-      `http://localhost:8000/api/research/${researchData.sessionId}/export-pdf`,
+      `https://research-back-psi.vercel.app/api/research/${researchData.sessionId}/export-pdf`,
       "_blank",
     );
   };
@@ -45,7 +45,6 @@ const IEEEPaperPanel = ({ researchData, setResearchData }) => {
 
   return (
     <div className="space-y-12">
-      {/* Title */}
       <div className="max-w-4xl">
         <h2 className="text-4xl font-bold text-[#5B2A86] tracking-tight mb-4">
           IEEE Style Research Paper
@@ -53,7 +52,6 @@ const IEEEPaperPanel = ({ researchData, setResearchData }) => {
         <div className="h-1 w-20 bg-[#0EA5A4] rounded-full"></div>
       </div>
 
-      {/* Generate Section */}
       {!researchData.ieeePaper && !loading && (
         <div
           className="bg-white p-12 rounded-3xl border border-gray-100
@@ -79,13 +77,11 @@ const IEEEPaperPanel = ({ researchData, setResearchData }) => {
 
       {error && <p className="text-red-500 text-center">{error}</p>}
 
-      {/* Display Paper */}
       {researchData.ieeePaper && !loading && (
         <div
           className="bg-white p-12 rounded-3xl border border-gray-100
         shadow-[0_20px_60px_rgba(0,0,0,0.06)]"
         >
-          {/* Export Button */}
           <div className="flex justify-end mb-6">
             <button
               onClick={handleExport}
@@ -96,7 +92,6 @@ const IEEEPaperPanel = ({ researchData, setResearchData }) => {
             </button>
           </div>
 
-          {/* Paper Content */}
           <div
             className="prose max-w-none whitespace-pre-wrap text-gray-800
           leading-relaxed text-lg bg-[#F3F4F6] p-8 rounded-2xl border border-gray-100"

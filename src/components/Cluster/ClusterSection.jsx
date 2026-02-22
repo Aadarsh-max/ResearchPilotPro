@@ -6,7 +6,6 @@ const ClusterSection = ({ clusters }) => {
   return (
    <div>
 
-  {/* Section Heading */}
   <div className="mb-14 max-w-4xl">
     <h2 className="text-4xl font-bold text-[#5B2A86] tracking-tight">
       Thematic Research Clusters
@@ -20,7 +19,6 @@ const ClusterSection = ({ clusters }) => {
     <div className="h-1 w-20 bg-[#0EA5A4] mt-6 rounded-full"></div>
   </div>
 
-  {/* Cluster Grid */}
   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
 
     {clusters.map((cluster) => (

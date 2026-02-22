@@ -42,7 +42,7 @@ const ResearchView = () => {
       const token = localStorage.getItem("token");
 
       const response = await axios.post(
-        "http://localhost:8000/api/research/search",
+        "https://research-back-psi.vercel.app/api/research/search",
         { topic },
         {
           headers: token ? { Authorization: `Bearer ${token}` } : {},
@@ -71,7 +71,7 @@ const ResearchView = () => {
         const token = localStorage.getItem("token");
 
         const res = await axios.get(
-          `http://localhost:8000/api/research/session/${sessionId}`,
+          `https://research-back-psi.vercel.app/api/research/session/${sessionId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -111,7 +111,6 @@ const ResearchView = () => {
   }));
   return (
     <div className="font-sans bg-[#FAFAFC] text-[#1F2937] min-h-screen px-6 md:px-16 py-20 relative overflow-hidden">
-      {/* Background Glow */}
       <div className="absolute w-150 h-150 bg-[#8B6CCF]/15 rounded-full blur-3xl -top-50 -left-50"></div>
       <div className="absolute w-125 h-125 bg-[#0EA5A4]/10 rounded-full blur-3xl -bottom-50 -right-37.5"></div>
 
@@ -132,7 +131,6 @@ const ResearchView = () => {
         );
       })}
 
-      {/* HEADER */}
       <div className="mb-20 max-w-6xl mx-auto text-center relative z-10">
         <h1 className="text-5xl md:text-6xl font-bold text-[#5B2A86] tracking-tight">
           Research Workspace
@@ -145,14 +143,12 @@ const ResearchView = () => {
         <div className="h-1 w-24 bg-[#0EA5A4] mt-8 rounded-full mx-auto"></div>
       </div>
 
-      {/* TOPIC INPUT */}
       <div className="max-w-4xl mx-auto mb-20 relative z-10">
         <div className="bg-white p-10 rounded-3xl border border-gray-100 shadow-[0_20px_60px_rgba(0,0,0,0.06)] backdrop-blur-xl">
           <TopicInput onSearch={handleSearch} />
         </div>
       </div>
 
-      {/* EMPTY STATE */}
       {!researchData && !loading && (
         <div className="max-w-6xl mx-auto bg-white p-14 rounded-3xl border border-gray-100 shadow-[0_20px_60px_rgba(0,0,0,0.06)] text-center relative z-10">
           <h2 className="text-4xl font-bold text-[#5B2A86] mb-10 tracking-tight">
@@ -165,7 +161,6 @@ const ResearchView = () => {
             estimate novelty, and generate a complete research proposal.
           </p>
 
-          {/* Feature Highlights */}
           <div className="grid md:grid-cols-3 gap-10 mt-16 text-left">
             {[
               {
@@ -193,7 +188,6 @@ const ResearchView = () => {
             ))}
           </div>
 
-          {/* Example Topics */}
           <div className="mt-16">
             <p className="text-sm text-gray-500 mb-8">Try searching for:</p>
 
@@ -223,7 +217,6 @@ const ResearchView = () => {
 
       {loading && <Loader />}
 
-      {/* RESULTS */}
       {researchData && !loading && (
         <div className="max-w-6xl mx-auto mt-24 relative z-10">
           {/* TAB NAVIGATION */}
@@ -252,7 +245,6 @@ const ResearchView = () => {
             ))}
           </div>
 
-          {/* TAB CONTENT */}
           <div className="bg-white p-12 rounded-3xl border border-gray-100 shadow-[0_20px_60px_rgba(0,0,0,0.06)] backdrop-blur-xl">
             {activeTab === "clusters" && (
               <ClusterSection clusters={researchData.clusters} />

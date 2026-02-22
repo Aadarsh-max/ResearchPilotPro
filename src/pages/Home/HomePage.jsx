@@ -27,9 +27,7 @@ const HomePage = () => {
 
   return (
     <div className="font-sans bg-[#FAFAFC] text-[#1F2937] overflow-hidden">
-      {/* HERO SECTION */}
       <section className="relative min-h-screen flex items-center justify-center bg-linear-to-br from-[#5B2A86] via-[#4C1D95] to-[#0EA5A4] text-white px-6 overflow-hidden">
-        {/* Falling Items */}
         {fallingElements.map((item, index) => (
           <div
             key={index}
@@ -69,7 +67,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* CORE FEATURES */}
       <section className="py-20 bg-[#F3F4F6] px-6 md:px-16">
         <h2 className="text-4xl font-bold text-center text-[#5B2A86] mb-16 animate-fadeUp">
           Core Intelligence Features
@@ -138,7 +135,6 @@ Includes abstract, methodology, and expected outcomes."
         </div>
       </section>
 
-      {/* FINAL STATEMENT */}
       <section className="py-20 px-6 md:px-32 text-center animated-gradient">
         <h2 className="text-4xl font-bold text-[#0EA5A4] mb-6 animate-fadeUp">
           Most tools summarize research.

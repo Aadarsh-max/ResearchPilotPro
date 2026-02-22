@@ -23,7 +23,7 @@ const Workspace = () => {
         }
 
         const res = await axios.get(
-          "http://localhost:8000/api/auth/profile",
+          "https://research-back-psi.vercel.app/api/auth/profile",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -50,7 +50,7 @@ const Workspace = () => {
       const token = localStorage.getItem("token");
 
       await axios.delete(
-        `http://localhost:8000/api/research/session/${deleteId}`,
+        `https://research-back-psi.vercel.app/api/research/session/${deleteId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -89,11 +89,9 @@ const Workspace = () => {
   return (
     <div className="min-h-screen bg-[#FAFAFC] px-6 md:px-16 py-16 relative overflow-hidden font-sans">
 
-      {/* Background Glow */}
       <div className="absolute w-150 h-150 bg-[#8B6CCF]/15 rounded-full blur-3xl -top-50 -left-50"></div>
       <div className="absolute w-125 h-125 bg-[#0EA5A4]/10 rounded-full blur-3xl -bottom-55 -right-45"></div>
 
-      {/* Header */}
       <div className="mb-16 max-w-6xl mx-auto relative z-10 text-center">
         <h1 className="text-5xl font-bold text-[#5B2A86] tracking-tight">
           Your Research Workspace
@@ -106,7 +104,6 @@ const Workspace = () => {
         <div className="h-1 w-24 bg-[#0EA5A4] mt-8 rounded-full mx-auto"></div>
       </div>
 
-      {/* Stats Card */}
       <div className="mb-14 max-w-4xl mx-auto relative z-10">
         <div className="bg-white p-10 rounded-3xl border border-gray-100
         shadow-[0_20px_60px_rgba(0,0,0,0.06)] text-center">
@@ -121,7 +118,6 @@ const Workspace = () => {
         </div>
       </div>
 
-      {/* Empty State */}
       {sessions.length === 0 ? (
         <div className="max-w-4xl mx-auto bg-white p-14 rounded-3xl border border-gray-100
         shadow-[0_20px_60px_rgba(0,0,0,0.06)] text-center relative z-10">
@@ -162,7 +158,6 @@ const Workspace = () => {
 
               <div className="flex justify-between mt-8 gap-4">
 
-                {/* Open Button */}
                 <button
                   onClick={() =>
                     navigate(`/researchview?session=${session._id}`)
@@ -176,7 +171,6 @@ const Workspace = () => {
                   Open
                 </button>
 
-                {/* Delete Button */}
                 <button
                   onClick={() => setDeleteId(session._id)}
                   className="cursor-pointer flex items-center justify-center gap-2 flex-1 px-5 py-3 text-sm border border-red-300
@@ -192,7 +186,6 @@ const Workspace = () => {
         </div>
       )}
 
-      {/* Delete Confirmation Modal */}
       {deleteId && (
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
           <div className="bg-white p-8 rounded-2xl shadow-xl w-100 text-center">

@@ -28,7 +28,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/auth/login",
+        "https://research-back-psi.vercel.app/api/auth/login",
         { email, password },
       );
 
@@ -46,9 +46,8 @@ const Login = () => {
       className="min-h-screen flex items-center justify-center  
 px-4 relative overflow-hidden"
     >
-      {/* Soft Animated Glow */}
-      <div className="absolute w-[500px] h-[500px] bg-[#8B6CCF]/20 rounded-full blur-3xl top-[-150px] left-[-150px] animate-softPulse"></div>
-      <div className="absolute w-[400px] h-[400px] bg-[#6D4CA3]/20 rounded-full blur-3xl bottom-[-120px] right-[-120px] animate-softPulse"></div>
+      <div className="absolute w-125 h-125 bg-[#8B6CCF]/20 rounded-full blur-3xl -top-37.5 left-[-150px] animate-softPulse"></div>
+      <div className="absolute w-100 h-100 bg-[#6D4CA3]/20 rounded-full blur-3xl bottom-[-120px] right-[-120px] animate-softPulse"></div>
 
       <div
         className="bg-white/85 backdrop-blur-xl w-full max-w-md rounded-3xl 
@@ -63,7 +62,6 @@ px-4 relative overflow-hidden"
         </p>
 
         <form onSubmit={handleLogin} className="space-y-5">
-          {/* Email */}
           <div>
             <label className="text-sm text-[#3C255F] font-medium">
               Email Address
@@ -81,7 +79,6 @@ px-4 relative overflow-hidden"
             />
           </div>
 
-          {/* Password */}
           <div>
             <label className="text-sm text-[#3C255F] font-medium">
               Password

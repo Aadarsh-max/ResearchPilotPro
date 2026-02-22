@@ -9,7 +9,6 @@ const ProposalView = ({ proposal }) => {
    <div className="bg-white p-10 rounded-3xl border border-gray-100
 shadow-[0_20px_60px_rgba(0,0,0,0.06)] transition duration-300">
 
-  {/* Header */}
   <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-6 mb-10">
 
     <div>

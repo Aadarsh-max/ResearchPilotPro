@@ -34,7 +34,7 @@ const Signup = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/auth/signup",
+        "https://research-back-psi.vercel.app/api/auth/signup",
         { name, email, password },
       );
 

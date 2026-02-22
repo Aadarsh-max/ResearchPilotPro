@@ -20,7 +20,6 @@ const DifficultyPanel = ({ difficulty }) => {
   return (
     <div className="space-y-14">
 
-  {/* Section Title */}
   <div className="max-w-4xl">
     <h2 className="text-4xl font-bold text-[#5B2A86] tracking-tight mb-4">
       Research Difficulty Assessment
@@ -28,7 +27,6 @@ const DifficultyPanel = ({ difficulty }) => {
     <div className="h-1 w-20 bg-[#0EA5A4] rounded-full"></div>
   </div>
 
-  {/* Difficulty Overview */}
   <div className="bg-white p-10 rounded-3xl border border-gray-100
   shadow-[0_20px_60px_rgba(0,0,0,0.06)] relative overflow-hidden">
 
@@ -70,7 +68,6 @@ const DifficultyPanel = ({ difficulty }) => {
 
   </div>
 
-  {/* Analytical Breakdown */}
   <div className="bg-white p-10 rounded-3xl border border-gray-100
   shadow-[0_20px_60px_rgba(0,0,0,0.06)]">
 
@@ -94,7 +91,6 @@ const DifficultyPanel = ({ difficulty }) => {
 
   </div>
 
-  {/* Interpretation Section */}
   <div className="bg-white p-10 rounded-3xl border border-gray-100
   shadow-[0_20px_60px_rgba(0,0,0,0.06)]">
 

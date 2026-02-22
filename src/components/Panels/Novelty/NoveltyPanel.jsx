@@ -4,7 +4,6 @@ const NoveltyPanel = ({ novelty }) => {
   return (
     <div className="space-y-12 max-w-4xl mx-auto">
 
-  {/* Title Section */}
   <div className="text-center">
     <h2 className="text-4xl font-bold text-[#5B2A86] tracking-tight">
       Novelty Score
@@ -15,7 +14,6 @@ const NoveltyPanel = ({ novelty }) => {
     </p>
   </div>
 
-  {/* Details Card */}
   <div className="bg-white p-10 rounded-3xl border border-gray-100
   shadow-[0_20px_60px_rgba(0,0,0,0.06)] space-y-5 text-center">
 
