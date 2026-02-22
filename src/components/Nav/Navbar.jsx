@@ -8,6 +8,7 @@ import {
   FaChevronDown,
   FaSignInAlt,
   FaUserPlus,
+  FaCompass,
 } from "react-icons/fa";
 
 const Navbar = () => {
@@ -39,16 +40,17 @@ const Navbar = () => {
     <nav
       className="flex justify-between items-center px-8 py-5
       bg-white/95 backdrop-blur-xl
-      border-b border-gray-100
+      border-b border-black
       shadow-[0_10px_40px_rgba(0,0,0,0.04)]
       sticky top-0 z-50"
     >
       <Link to="/" className="cursor-pointer">
         <h1
           className="text-2xl font-bold tracking-tight text-[#5B2A86]
-          hover:opacity-80 transition duration-300 cursor-pointer"
+    hover:opacity-80 transition duration-300 cursor-pointer"
         >
-          Research Pilot 
+          <FaCompass className="inline mr-2 mb-1 text-[#5B2A86]" />
+          Research Pilot
         </h1>
       </Link>
 

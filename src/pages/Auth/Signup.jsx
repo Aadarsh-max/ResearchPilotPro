@@ -161,7 +161,7 @@ const Signup = () => {
             className={`w-full mt-3 py-4 rounded-2xl
             text-white font-semibold tracking-wide
             shadow-[0_20px_50px_rgba(109,76,163,0.45)]
-            transition duration-300
+            transition duration-300 cursor-pointer
             ${
               loading
                 ? "bg-gray-400 cursor-not-allowed"

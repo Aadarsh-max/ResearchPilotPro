@@ -134,7 +134,7 @@ const Login = () => {
             disabled={loading}
             className={`w-full py-3 rounded-xl font-semibold 
             shadow-[0_15px_35px_rgba(109,76,163,0.4)]
-            transition-all duration-300
+            transition-all duration-300 cursor-pointer
             ${
               loading
                 ? "bg-gray-400 cursor-not-allowed"

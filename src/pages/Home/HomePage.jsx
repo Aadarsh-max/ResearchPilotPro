@@ -9,7 +9,8 @@ import {
   FaFileAlt,
   FaCopy,
   FaPen,
-  FaBookOpen
+  FaBookOpen,
+  FaRocket,
 } from "react-icons/fa";
 import "../../styles/homepage.css";
 
@@ -59,9 +60,10 @@ const HomePage = () => {
           <button
             onClick={() => navigate("/researchview")}
             className="bg-white text-[#5B2A86] font-semibold px-8 py-3 rounded-full 
-            shadow-xl hover:scale-110 hover:bg-gray-100 
-            transition duration-300 animate-glow cursor-pointer"
+  shadow-xl hover:scale-110 hover:bg-gray-100 
+  transition duration-300 animate-glow cursor-pointer"
           >
+            <FaRocket className="inline mr-2 mb-1 text-[#5B2A86]" />
             Get Started with ResearchPilot
           </button>
         </div>
@@ -135,18 +137,22 @@ Includes abstract, methodology, and expected outcomes."
         </div>
       </section>
 
-      <section className="py-20 px-6 md:px-32 text-center animated-gradient">
-        <h2 className="text-4xl font-bold text-[#0EA5A4] mb-6 animate-fadeUp">
-          Most tools summarize research.
-        </h2>
+      <section className="py-20 px-6 md:px-32 text-center animated-gradient border border-black">
+  
+  <FaBrain className="mx-auto text-5xl text-[#5B2A86] mb-6 animate-fadeUp" />
 
-        <p
-          className="text-2xl font-semibold text-[#5B2A86] animate-fadeUp"
-          style={{ animationDelay: "0.2s" }}
-        >
-          ResearchPilot thinks like a Research Strategist.
-        </p>
-      </section>
+  <h2 className="text-4xl font-bold text-[#0EA5A4] mb-6 animate-fadeUp">
+    Most tools summarize research.
+  </h2>
+
+  <p
+    className="text-2xl font-semibold text-[#5B2A86] animate-fadeUp"
+    style={{ animationDelay: "0.2s" }}
+  >
+    ResearchPilot thinks like a Research Strategist.
+  </p>
+
+</section>
     </div>
   );
 };
