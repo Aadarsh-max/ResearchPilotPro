@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 import { validateEmail } from "../../utils/helper";
@@ -9,7 +9,16 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate("/");
+    }
+  }, [navigate]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -25,6 +34,7 @@ const Login = () => {
     }
 
     setError("");
+    setLoading(true);
 
     try {
       const response = await axios.post(
@@ -32,28 +42,29 @@ const Login = () => {
         { email, password },
       );
 
-      const token = response.data.token;
+      const { token, user } = response.data;
+
       localStorage.setItem("token", token);
+      localStorage.setItem("user", JSON.stringify(user));
 
       navigate("/");
-    } catch (error) {
-      setError(error.response?.data?.message || "Something went wrong.");
+    } catch (err) {
+      setError(err.response?.data?.message || "Invalid credentials.");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div
-      className="min-h-screen flex items-center justify-center  
-px-4 relative overflow-hidden"
-    >
+    <div className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
       <div className="absolute w-125 h-125 bg-[#8B6CCF]/20 rounded-full blur-3xl -top-37.5 left-[-150px] animate-softPulse"></div>
       <div className="absolute w-100 h-100 bg-[#6D4CA3]/20 rounded-full blur-3xl bottom-[-120px] right-[-120px] animate-softPulse"></div>
 
       <div
         className="bg-white/85 backdrop-blur-xl w-full max-w-md rounded-3xl 
-  shadow-[0_30px_70px_rgba(109,76,163,0.35)] 
-  border border-[#E9D8FF]
-  p-10 animate-fadeScale relative z-10 transition-all duration-500"
+      shadow-[0_30px_70px_rgba(109,76,163,0.35)] 
+      border border-[#E9D8FF]
+      p-10 animate-fadeScale relative z-10 transition-all duration-500"
       >
         <h3 className="text-3xl font-bold text-[#3C255F]">Welcome Back</h3>
 
@@ -73,9 +84,9 @@ px-4 relative overflow-hidden"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="w-full mt-2 border border-[#E9D8FF] rounded-xl px-4 py-3 text-sm 
-          outline-none bg-white/70 backdrop-blur-md
-          focus:border-[#6D4CA3] focus:ring-2 focus:ring-[#8B6CCF]/30
-          transition-all duration-300"
+              outline-none bg-white/70 backdrop-blur-md
+              focus:border-[#6D4CA3] focus:ring-2 focus:ring-[#8B6CCF]/30
+              transition-all duration-300"
             />
           </div>
 
@@ -86,9 +97,9 @@ px-4 relative overflow-hidden"
 
             <div
               className="flex items-center border border-[#E9D8FF] rounded-xl px-4 py-3 mt-2 
-        bg-white/70 backdrop-blur-md
-        focus-within:border-[#6D4CA3] focus-within:ring-2 focus-within:ring-[#8B6CCF]/30
-        transition-all duration-300"
+            bg-white/70 backdrop-blur-md
+            focus-within:border-[#6D4CA3] focus-within:ring-2 focus-within:ring-[#8B6CCF]/30
+            transition-all duration-300"
             >
               <input
                 type={showPassword ? "text" : "password"}
@@ -120,14 +131,17 @@ px-4 relative overflow-hidden"
 
           <button
             type="submit"
-            className="w-full bg-gradient-to-r from-[#6D4CA3] to-[#8B6CCF] 
-        text-white py-3 rounded-xl font-semibold 
-        shadow-[0_15px_35px_rgba(109,76,163,0.4)]
-        hover:shadow-[0_25px_55px_rgba(139,108,207,0.5)]
-        hover:scale-105 active:scale-95
-        transition-all duration-300 cursor-pointer"
+            disabled={loading}
+            className={`w-full py-3 rounded-xl font-semibold 
+            shadow-[0_15px_35px_rgba(109,76,163,0.4)]
+            transition-all duration-300
+            ${
+              loading
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-gradient-to-r from-[#6D4CA3] to-[#8B6CCF] text-white hover:scale-105 active:scale-95"
+            }`}
           >
-            LOGIN
+            {loading ? "Logging in..." : "LOGIN"}
           </button>
 
           <p className="text-sm text-[#4B2E73]/80 text-center">
