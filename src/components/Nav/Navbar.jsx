@@ -48,7 +48,7 @@ const Navbar = () => {
           className="text-2xl font-bold tracking-tight text-[#5B2A86]
           hover:opacity-80 transition duration-300 cursor-pointer"
         >
-          Research Pilot 🚀
+          Research Pilot 
         </h1>
       </Link>
 
