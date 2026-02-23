@@ -38,7 +38,9 @@ const Navbar = () => {
 
   return (
     <nav
-      className="flex justify-between items-center px-8 py-5
+      className="flex justify-between items-center 
+      px-4 sm:px-6 md:px-8 
+      py-4 sm:py-5
       bg-white/95 backdrop-blur-xl
       border-b border-black
       shadow-[0_10px_40px_rgba(0,0,0,0.04)]
@@ -46,38 +48,42 @@ const Navbar = () => {
     >
       <Link to="/" className="cursor-pointer">
         <h1
-          className="text-2xl font-bold tracking-tight text-[#5B2A86]
-    hover:opacity-80 transition duration-300 cursor-pointer"
+          className="text-lg sm:text-xl md:text-2xl 
+          font-bold tracking-tight text-[#5B2A86]
+          hover:opacity-80 transition duration-300 
+          flex items-center"
         >
-          <FaCompass className="inline mr-2 mb-1 text-[#5B2A86]" />
-          Research Pilot
+          <FaCompass className="mr-2 text-[#5B2A86]" />
+          <span className="hidden xs:inline">Research Pilot</span>
+          <span className="xs:hidden">RP</span>
         </h1>
       </Link>
 
       {!token ? (
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-3 sm:gap-6">
           <Link
             to="/login"
             className="cursor-pointer flex items-center gap-2
-            text-[#5B2A86] font-medium
+            text-[#5B2A86] font-medium text-sm sm:text-base
             hover:text-[#0EA5A4]
             transition duration-300"
           >
             <FaSignInAlt size={14} />
-            Login
+            <span className="hidden sm:inline">Login</span>
           </Link>
 
           <Link
             to="/signup"
             className="cursor-pointer flex items-center gap-2
             bg-linear-to-r from-[#5B2A86] to-[#8B6CCF]
-            text-white px-6 py-2.5 rounded-full font-semibold
+            text-white px-4 sm:px-6 py-2 rounded-full 
+            text-sm sm:text-base font-semibold
             shadow-[0_10px_30px_rgba(91,42,134,0.2)]
             hover:scale-105 hover:shadow-[0_15px_35px_rgba(91,42,134,0.25)]
             transition duration-300"
           >
             <FaUserPlus size={14} />
-            Sign Up
+            <span className="hidden sm:inline">Sign Up</span>
           </Link>
         </div>
       ) : (
@@ -86,21 +92,22 @@ const Navbar = () => {
             onClick={() => setOpen(!open)}
             className="cursor-pointer flex items-center gap-2
             bg-[#5B2A86]/10 text-[#5B2A86]
-            px-6 py-2.5 rounded-full font-medium
+            px-4 sm:px-6 py-2 rounded-full 
+            text-sm sm:text-base font-medium
             hover:bg-[#5B2A86]/20 hover:text-[#3C255F]
             transition duration-300 backdrop-blur-md"
           >
             <FaUserCircle size={18} />
-            Profile
+            <span className="hidden sm:inline">Profile</span>
             <FaChevronDown size={12} />
           </button>
 
           {open && (
             <div
-              className="absolute right-0 mt-4
+              className="absolute right-0 mt-3 sm:mt-4
               bg-white
               shadow-[0_25px_60px_rgba(0,0,0,0.08)]
-              rounded-2xl w-52
+              rounded-2xl w-44 sm:w-52
               border border-gray-100
               overflow-hidden z-50"
             >
@@ -108,7 +115,8 @@ const Navbar = () => {
                 to="/profile"
                 onClick={() => setOpen(false)}
                 className="cursor-pointer flex items-center gap-3
-                px-6 py-3 hover:bg-gray-50 transition duration-200"
+                px-4 sm:px-6 py-3 text-sm sm:text-base
+                hover:bg-gray-50 transition duration-200"
               >
                 <FaUser size={14} />
                 My Profile
@@ -118,7 +126,8 @@ const Navbar = () => {
                 to="/workspace"
                 onClick={() => setOpen(false)}
                 className="cursor-pointer flex items-center gap-3
-                px-6 py-3 hover:bg-gray-50 transition duration-200"
+                px-4 sm:px-6 py-3 text-sm sm:text-base
+                hover:bg-gray-50 transition duration-200"
               >
                 <FaFolderOpen size={14} />
                 My Research
@@ -127,7 +136,8 @@ const Navbar = () => {
               <button
                 onClick={handleLogout}
                 className="cursor-pointer flex items-center gap-3
-                w-full text-left px-6 py-3
+                w-full text-left px-4 sm:px-6 py-3
+                text-sm sm:text-base
                 hover:bg-red-50 text-red-500 transition duration-200"
               >
                 <FaSignOutAlt size={14} />

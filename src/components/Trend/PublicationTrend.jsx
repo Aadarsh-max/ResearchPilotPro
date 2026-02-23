@@ -12,7 +12,6 @@ import {
 const PublicationTrend = ({ papers }) => {
   if (!papers || papers.length === 0) return null;
 
-  // Count publications per year
   const yearMap = {};
 
   papers.forEach((paper) => {
@@ -30,51 +29,74 @@ const PublicationTrend = ({ papers }) => {
     }));
 
   return (
-    <div className="bg-white p-10 rounded-3xl border border-gray-100
-shadow-[0_20px_60px_rgba(0,0,0,0.06)]">
+    <div
+      className="bg-white 
+    p-5 sm:p-6 md:p-8 lg:p-10 
+    rounded-2xl sm:rounded-3xl 
+    border border-gray-100
+    shadow-[0_10px_30px_rgba(0,0,0,0.05)] 
+    sm:shadow-[0_20px_60px_rgba(0,0,0,0.06)]"
+    >
+      <div className="mb-6 sm:mb-8 max-w-4xl">
+        <h2
+          className="text-xl sm:text-2xl md:text-3xl 
+        font-bold text-[#5B2A86] tracking-tight"
+        >
+          Publication Trend
+        </h2>
 
-  <div className="mb-8 max-w-4xl">
-    <h2 className="text-3xl font-bold text-[#5B2A86] tracking-tight">
-      Publication Trend
-    </h2>
+        <p
+          className="text-gray-600 mt-2 sm:mt-4 
+        text-sm sm:text-base md:text-lg"
+        >
+          Year-wise distribution of retrieved research papers.
+        </p>
+      </div>
 
-    <p className="text-gray-600 mt-4 text-lg">
-      Year-wise distribution of retrieved research papers.
-    </p>
-  </div>
+      <div className="w-full h-[250px] sm:h-[300px] md:h-[320px]">
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart data={chartData}>
+            <CartesianGrid
+              stroke="#E5E7EB"
+              strokeDasharray="4 4"
+              opacity={0.6}
+            />
 
-  <ResponsiveContainer width="100%" height={320}>
-    <LineChart data={chartData}>
+            <XAxis
+              dataKey="year"
+              stroke="#6B7280"
+              tick={{ fontSize: 10 }}
+              interval="preserveStartEnd"
+            />
 
-      <CartesianGrid stroke="#E5E7EB" strokeDasharray="4 4" opacity={0.6} />
+            <YAxis
+              allowDecimals={false}
+              stroke="#6B7280"
+              tick={{ fontSize: 10 }}
+            />
 
-      <XAxis dataKey="year" stroke="#6B7280" />
+            <Tooltip />
 
-      <YAxis allowDecimals={false} stroke="#6B7280" />
+            <Line
+              type="monotone"
+              dataKey="count"
+              stroke="url(#trendGradient)"
+              strokeWidth={2}
+              dot={{ r: 3 }}
+              activeDot={{ r: 5 }}
+            />
 
-      <Tooltip />
-
-      <Line
-        type="monotone"
-        dataKey="count"
-        stroke="url(#trendGradient)"
-        strokeWidth={3}
-        dot={{ r: 5 }}
-        activeDot={{ r: 7 }}
-      />
-
-      <defs>
-        <linearGradient id="trendGradient" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#5B2A86" />
-          <stop offset="50%" stopColor="#8B6CCF" />
-          <stop offset="100%" stopColor="#0EA5A4" />
-        </linearGradient>
-      </defs>
-
-    </LineChart>
-  </ResponsiveContainer>
-
-</div>
+            <defs>
+              <linearGradient id="trendGradient" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stopColor="#5B2A86" />
+                <stop offset="50%" stopColor="#8B6CCF" />
+                <stop offset="100%" stopColor="#0EA5A4" />
+              </linearGradient>
+            </defs>
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
+    </div>
   );
 };
 

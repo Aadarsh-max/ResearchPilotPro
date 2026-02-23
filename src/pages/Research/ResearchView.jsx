@@ -107,54 +107,49 @@ const ResearchView = () => {
     <div
       className="font-sans bg-[#FAFAFC] text-[#1F2937] min-h-screen
       px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24
-      py-12 sm:py-16 md:py-20 relative overflow-hidden"
+      py-8 sm:py-12 md:py-16 relative overflow-hidden"
     >
-      {/* Background Blur */}
-      <div className="absolute w-72 h-72 sm:w-96 sm:h-96 bg-[#8B6CCF]/15 rounded-full blur-3xl -top-40 -left-40"></div>
-      <div className="absolute w-72 h-72 sm:w-96 sm:h-96 bg-[#0EA5A4]/10 rounded-full blur-3xl -bottom-40 -right-40"></div>
+      <div className="absolute w-60 h-60 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-[#8B6CCF]/15 rounded-full blur-3xl -top-32 -left-32"></div>
+      <div className="absolute w-60 h-60 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-[#0EA5A4]/10 rounded-full blur-3xl -bottom-32 -right-32"></div>
 
-      {/* Falling Icons (hidden on mobile) */}
       {fallingItems.map((item, index) => {
         const IconComponent = item.icon;
         return (
           <div
             key={index}
-            className="falling-item hidden sm:block"
+            className="falling-item hidden md:block"
             style={{
               left: item.left,
               animationDuration: item.duration,
               animationDelay: item.delay,
             }}
           >
-            <IconComponent size={18} />
+            <IconComponent size={16} />
           </div>
         );
       })}
 
-      {/* Header */}
-      <div className="mb-12 sm:mb-16 md:mb-20 max-w-6xl mx-auto text-center relative z-10">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#5B2A86] tracking-tight">
+      <div className="mb-10 sm:mb-14 md:mb-20 max-w-6xl mx-auto text-center relative z-10">
+        <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-[#5B2A86] tracking-tight">
           Research Workspace
         </h1>
 
-        <p className="text-gray-600 mt-4 sm:mt-6 text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+        <p className="text-gray-600 mt-4 text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
           Explore research topics and analyze intelligently.
         </p>
 
-        <div className="h-1 w-20 sm:w-24 bg-[#0EA5A4] mt-6 sm:mt-8 rounded-full mx-auto"></div>
+        <div className="h-1 w-16 sm:w-20 bg-[#0EA5A4] mt-6 rounded-full mx-auto"></div>
       </div>
 
-      {/* Topic Input */}
-      <div className="max-w-4xl mx-auto mb-12 sm:mb-16 md:mb-20 relative z-10">
-        <div className="bg-white p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl border border-gray-100 shadow-[0_20px_60px_rgba(0,0,0,0.06)]">
+      <div className="max-w-4xl mx-auto mb-10 sm:mb-16 relative z-10">
+        <div className="bg-white p-5 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl border border-gray-100 shadow-[0_20px_60px_rgba(0,0,0,0.06)]">
           <TopicInput onSearch={handleSearch} />
         </div>
       </div>
 
-      {/* Empty State */}
       {!researchData && !loading && (
         <div className="max-w-6xl mx-auto bg-white p-6 sm:p-10 md:p-14 rounded-2xl sm:rounded-3xl border border-gray-100 shadow-[0_20px_60px_rgba(0,0,0,0.06)] text-center relative z-10">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#5B2A86] mb-6 sm:mb-10">
+          <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-[#5B2A86] mb-6">
             Start Your Research Journey
           </h2>
 
@@ -164,7 +159,7 @@ const ResearchView = () => {
             estimate novelty, and generate a complete research proposal.
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-10 mt-10 sm:mt-16 text-left">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mt-10 sm:mt-16 text-left">
             {[
               {
                 title: "Smart Clustering",
@@ -181,9 +176,9 @@ const ResearchView = () => {
             ].map((item, index) => (
               <div
                 key={index}
-                className="bg-[#F3F4F6] p-6 sm:p-8 rounded-2xl border border-gray-100 shadow-sm hover:-translate-y-1 transition"
+                className="bg-[#F3F4F6] p-6 rounded-2xl border border-gray-100 shadow-sm hover:-translate-y-1 transition"
               >
-                <h3 className="font-semibold text-[#0EA5A4] text-lg sm:text-xl mb-3 sm:mb-4">
+                <h3 className="font-semibold text-[#0EA5A4] text-base sm:text-lg mb-3">
                   {item.title}
                 </h3>
                 <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
@@ -196,16 +191,16 @@ const ResearchView = () => {
       )}
 
       {error && (
-        <p className="text-red-500 mt-8 text-center relative z-10">{error}</p>
+        <p className="text-red-500 mt-6 text-center relative z-10 text-sm sm:text-base">
+          {error}
+        </p>
       )}
 
       {loading && <Loader />}
 
-      {/* Research Data */}
       {researchData && !loading && (
-        <div className="max-w-6xl mx-auto mt-16 sm:mt-24 relative z-10">
-          {/* Tabs */}
-          <div className="flex flex-wrap gap-3 sm:gap-4 mb-8 sm:mb-14 justify-center">
+        <div className="max-w-6xl mx-auto mt-14 sm:mt-20 relative z-10">
+          <div className="flex flex-wrap gap-2 sm:gap-3 mb-8 sm:mb-12 justify-center">
             {[
               "clusters",
               "gaps",
@@ -219,7 +214,7 @@ const ResearchView = () => {
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`px-4 sm:px-6 py-2 sm:py-3 text-xs sm:text-sm rounded-full font-medium transition shadow-sm ${
+                className={`px-3 sm:px-5 py-2 text-xs sm:text-sm rounded-full font-medium transition ${
                   activeTab === tab
                     ? "bg-[#5B2A86] text-white"
                     : "bg-white border border-gray-200 text-gray-600 hover:bg-gray-100"
@@ -230,7 +225,7 @@ const ResearchView = () => {
             ))}
           </div>
 
-          <div className="bg-white p-6 sm:p-8 md:p-10 lg:p-12 rounded-2xl sm:rounded-3xl border border-gray-100 shadow-[0_20px_60px_rgba(0,0,0,0.06)]">
+          <div className="bg-white p-5 sm:p-8 md:p-12 rounded-2xl sm:rounded-3xl border border-gray-100 shadow-[0_20px_60px_rgba(0,0,0,0.06)]">
             {activeTab === "clusters" && (
               <ClusterSection clusters={researchData.clusters} />
             )}
@@ -245,11 +240,11 @@ const ResearchView = () => {
 
             {activeTab === "papers" && (
               <div>
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#5B2A86] mb-8 sm:mb-12">
+                <h2 className="text-lg sm:text-2xl md:text-3xl font-bold text-[#5B2A86] mb-8">
                   Retrieved Research Papers
                 </h2>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                   {researchData.papers.map((paper) => (
                     <PaperCard key={paper._id} paper={paper} />
                   ))}
@@ -258,7 +253,7 @@ const ResearchView = () => {
             )}
 
             {activeTab === "analytics" && (
-              <div className="space-y-10 sm:space-y-20">
+              <div className="space-y-8 sm:space-y-16">
                 <CitationGraph papers={researchData.papers} />
                 <PublicationTrend papers={researchData.papers} />
               </div>
