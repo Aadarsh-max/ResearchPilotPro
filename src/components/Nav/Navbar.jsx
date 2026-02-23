@@ -53,9 +53,8 @@ const Navbar = () => {
           hover:opacity-80 transition duration-300 
           flex items-center"
         >
-          <FaCompass className="mr-2 text-[#5B2A86]" />
-          <span className="hidden xs:inline">Research Pilot</span>
-          <span className="xs:hidden">RP</span>
+          <FaCompass className="text-[#5B2A86]" />
+          <span >Research Pilot</span>
         </h1>
       </Link>
 
